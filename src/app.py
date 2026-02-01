@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
-from predict import SentimentModel
+from src.predict import SentimentModel
 
 app = FastAPI(title="Sentiment Analysis Application")
 

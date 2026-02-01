@@ -1,6 +1,7 @@
 # src/predict.py
 import os
 import joblib
+from transformers import pipeline
 
 class SentimentModel:
     """
@@ -13,9 +14,16 @@ class SentimentModel:
             os.path.dirname(__file__),
             "../models/sentiment_model/model.joblib"
         )
-        if not os.path.exists(model_path):
-            raise ValueError(f"Model file not found at {model_path}.")
-        self.model = joblib.load(model_path)
+        if os.path.exists(model_path):
+            #load local trained model
+            #raise ValueError(f"Model file not found at {model_path}.")
+            self.model = joblib.load(model_path)
+            self.is_local_model = True
+        else:
+            # Fallback to pre-trained Hugging Face model
+            print(f"Model file not found at {model_path}. Using Hugging Face pipeline instead.")
+            self.model = pipeline("sentiment-analysis")
+            self.is_local_model = False
 
     def predict(self, texts):
         """
