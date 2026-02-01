@@ -1,4 +1,9 @@
-streamlit
 pandas
 torch
 transformers
+joblib
+mlflow
+fastapi
+uvicorn
+python-multipart
+jinja2
