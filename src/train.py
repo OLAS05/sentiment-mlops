@@ -33,7 +33,12 @@ def train_and_log_model(csv_path: str):
     - No fine-tuning is performed
     - CSV is used for metadata only
     """
-
+    # --- Check if CSV exists ---
+    if not os.path.isfile(csv_path):
+        print(f"⚠️ CSV file not found at: {csv_path}")
+        print("Skipping training metadata logging. You can still use the pretrained model for inference.")
+        return  # Stop gracefully without error
+    
     df = pd.read_csv(csv_path)
 
     if "message" not in df.columns:
