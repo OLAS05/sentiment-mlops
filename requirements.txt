@@ -1,8 +1,13 @@
+# Data & ML
 pandas
-torch
+torch --index-url https://download.pytorch.org/whl/cpu
 transformers
 joblib
+
+# MLOps & tracking
 mlflow
+
+# Web & API
 fastapi
 uvicorn
 python-multipart
